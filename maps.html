@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="jquery.min.js"></script>
+    <link rel="stylesheet" href="lib/jquery-ui.min.css">
+    <script src="lib/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script onerror="alert('error')" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQtKOLBtvXi6Sfl4XbFtTJE8Vlfe4Iyik&v=3"></script>
+    <script src="lib/knockout-3.3.0.js"></script>
+    <!--
+    <script src="js.js"></script>
+    -->
+</head>
+<body>
+<div class="container">
+    <button id="toggle">toggle</button>
+    <div id="map"></div>
+    <aside class="options-box" id="aside">
+        <h1>Find Your New NYC Home</h1>
+        <div id="menu">
+            <input id="show-listings" type="button" value="Show Listings">
+            <input id="hide-listings" type="button" value="Hide Listings">
+            <hr>
+            <h3>Filter</h3>
+            <input type="search" id="search">
+            <button onclick="getmarker()">Search</button>
+            <hr>
+            <ul id="markers">
+
+            </ul>
+            <ul data-bind="foreach : locations ">
+                <li data-bind="text : title , click: $root.recenter"></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+<script src="script.js"></script>
+    <script type="text/javascript">
+        $('#toggle').click(function () {
+            $('aside').toggle();
+        })
+    </script>
+<!--<script type="text/javascript" src="knockoutcode.js"></script>-->
+</body>
+</html>
